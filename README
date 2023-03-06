@@ -1,2 +1,6 @@
-INDEX is for Login Page
+INDEX is for Sign Up Page
 Fonts used include Roboto & Mustica Pro
+
+
+COMMENTS: 
+Change path of Font Files in style.css to the subfolder path.
