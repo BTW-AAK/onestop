@@ -28,6 +28,7 @@ border-bottom-left-radius: 25px;
 border-bottom-right-radius: 25px;
 z-index: 999;
 
+
 }
 
 .navbar__container{
@@ -39,36 +40,36 @@ z-index: 1;
 width: 100%;
 max-width: 1300px;
 margin: 0 auto;
-padding: 0 50px;
+margin-left: 700px;
+padding: 0 60px;
+color: #eee;
 background: #eee;
 }
 
 #navbar__logo{
-background: #eee;
-display: flex;
+background-color: #eee; 
 align-items: center;
-cursor: pointer;
-text-decoration: none;
-font-size: 2rem;
-}
-
-.fa-gem {
-margin-right: 0.5rem;
+margin-top: auto;
+margin-bottom: auto;
+cursor: crosshair;
+margin-left: 100px;
 }
 
 .navbar__menu {
 
     display: flex;
     background: #eee;
+    color: #eee;
     align-items: center;
     list-style: none;
     text-align: center;
-
+    
 }
 
 .navbar__item {
     height:80px;
     background: #eee;
+    color: #eee;
 }
 
 .navbar__links {
@@ -78,8 +79,9 @@ margin-right: 0.5rem;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    padding: 0 1rem;
+    padding: 0 15px;
     height: 100%;
+    
 
 }
 
@@ -95,22 +97,9 @@ margin-right: 0.5rem;
 
 #profile-button-container{background: #eee;
 margin-top: 10px;
+
 }
-/* .button {
-    display: flex;
-    background: #eee;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    height: 100%;
-    width: 100%;
-    outline: none;
-    border-radius: 3px;
-    background: #FF2491;
-    white-space: normal;
-    color: #fff;
-    margin: -5%;
-} */
+
 
 .button:hover {
 
@@ -121,6 +110,7 @@ margin-top: 10px;
 .navbar__links:hover {
 background: #80FF88;
 transition: all 0.4s ease;
+
 }
 /*! Login page*/
 .logo-signup {
@@ -276,7 +266,49 @@ transition: all 0.4s ease;
     color: #292929;
     border: #2B2B2B;}
 
+    /* 
+!Home
+*/ 
 
+#home-container{
+width: 1500px;
+height: 750px;
+margin-top: 50px;
+margin: 50px auto auto auto;
+background-color: #454545;
+border-radius: 15px;
+z-index: 1;
+}
+#greeting-name{
+    background-color: #454545;
+    padding-top: 200px;
+    text-align: center;
+    border-radius: 15px;
+}
+
+h1{
+    background-color: #454545;
+    color: #eee;
+    z-index: 2;
+    font-size: 70px;
+}
+#name{
+    background-color: #454545;
+    color: #eee;
+    font-size: 70px;
+}
+h2 {
+    background-color: #454545;
+    color: #eee;
+    z-index: 2;
+    font-size: 25px;
+}
+#date{
+    padding-top: 20px;
+    background-color: #454545;
+    color: #eee;
+    font-size: 25px;
+}
 /*
 .navbar__container{
     display: flex;

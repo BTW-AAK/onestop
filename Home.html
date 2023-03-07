@@ -12,7 +12,9 @@
 
 <nav class="navbar">
     <div class="navbar__container">
-        <a href="" id="navbar__logo">NEXT</a>
+        <a href="" id="navbar__logo">
+            <img src="images/logo-filled.png" alt="logo">
+        </a>
         <div class="navbar__toggle" id="mobile-menu">
             <span class="bar"></span>
             <span class="bar"></span>
@@ -38,4 +40,21 @@
         </ul>
     </div>
 </nav>
+
+<div id="home-container">
+    <div id="greeting-name">
+        <h1>Welcome, <span id="name"></span></h1>
+        <script>
+            let name = "Nathan";
+            document.getElementById("name").innerHTML = name;
+         </script>
+         <br>
+         <h2><span id="date"></span></h2>
+         <script>
+            let date = "07/03/2023";
+            document.getElementById("date").innerHTML = date;
+         </script>
+</div>
+</div>
+
 </body>
