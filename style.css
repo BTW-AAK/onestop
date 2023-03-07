@@ -1,13 +1,17 @@
 @font-face {
     font-family: "MusticaPro";
-    src:url(MusticaproSemibold-2OG5o.otf) format("opentype");
+    src:url(images/MusticaproSemibold-2OG5o.otf) format("opentype");
   }
+@font-face {
+    font-family: "Roboto";
+    src: url(images/Roboto-Regular.ttf);
+}
 
 * {
 box-sizing: border-box;
 margin: 0;
 padding: 0;
-font-family: myFirstFont;
+font-family: "MusticaPro";
 background: #2B2B2B;
 }
 
@@ -115,40 +119,17 @@ margin-right: 0.5rem;
 background: #80FF88;
 transition: all 0.3s ease;
 }
-
-.card {
-    /* Add shadows to create the "card" effect */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    background-color: #eee;
-    border-radius: 10px;
-    width: 30%;
-    height: 100px;
-    position: sticky;
-    margin-top: 15px;
-
-  }
   
-  /* On mouse-over, add a deeper shadow */
-  .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 2);
-  }
-  img {
-    border-radius: 15px;
-    margin-left: 16px;
-  }
-  /* Add some padding inside the card container */
-  .container {
-    padding: 2px 16px;
-    background-color: #eee;
-    border-radius: 10px;
-  }
 .logo-signup {
     margin-left: 25px;
     margin-top: -905px;
 }
-.signup-title{
+.login-title{
     font-family: "MusticaPro";
+    font-size: 70px;
+    margin-left: 100px;
+    color: #ffff;
+    padding-top: 100px;
 }
   .abstract {
     display: flex;
@@ -160,12 +141,72 @@ transition: all 0.3s ease;
     height: screen;
     z-index: 0;
   }
+
+                                          /*INPUTS */
+  input {
+    background-color: #454545;
+    color: #e9e9e9;
+    font-family: "Roboto";
+    border-radius: 10px;
+    border: #2B2B2B;
+    }
 .email-S{
     margin-left: 100px;
-    padding-top: 50px;
-    width: fit-content;
+    padding-top: 45px;
+}
+#emailS {
+    width: 500px;
+    height: 70px;   
+    font-size: 25px; 
+    padding-left: 10px;
+}
+#emailS::placeholder {
+    color: #d6d6d6 ;
+    font-family: "Roboto";
+    font-size: 25px;
 }
 
+.password-S{
+    margin-left: 100px;
+    padding-top: 30px;
+}
+
+#passwordS {
+    width: 500px;
+    height: 70px;
+    font-size: 25px;
+    padding-left: 10px;
+}
+#passwordS::placeholder {
+    color: #d6d6d6 ;
+    font-family: "Roboto";
+    font-size: 25px;
+}
+.swap-login-signup {
+    margin-left: 100px;
+}
+#login-signup-swap {
+    color: #e9e9e9;
+    font-family: "Roboto";
+    font-size: 15px;
+}
+.login-button{
+    padding-left: 100px;
+    padding-top: 50px;
+}
+#button-login {
+    width: 500px;
+    height: 70px;
+    border-radius: 10px;
+    background-color: #7BF589;
+    font-size: 38px;
+    font-family: "MusticaPro";
+    color: #292929;
+    border: #2B2B2B;
+}
+
+
+/* 
 @media screen and (max-width: 960px) {
 .navbar__container{
     display: flex;
@@ -253,4 +294,4 @@ background: #fff;
 #mobile-menu.is-active .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
 }
-}
+} */
