@@ -16,7 +16,7 @@ background: #2B2B2B;
 }
 
 .navbar {
-background: #2b2b2b;
+    background: #eee;
 height: 80px;
 display: flex;
 justify-content: center;
@@ -24,11 +24,14 @@ align-items: center;
 font-size: 1.4rem;
 position: sticky;
 top: 0;
+border-bottom-left-radius: 25px;
+border-bottom-right-radius: 25px;
 z-index: 999;
 
 }
 
 .navbar__container{
+
 display: flex;
 justify-content: space-between;
 height: 80px;
@@ -37,18 +40,11 @@ width: 100%;
 max-width: 1300px;
 margin: 0 auto;
 padding: 0 50px;
-background: #2b2b2b;
+background: #eee;
 }
 
 #navbar__logo{
-background-color: #dcfade;
-background-image: linear-gradient(to top, #dcfade 0%, #80FF88 100%);
-background-size: 100%;
-background-clip: border-box;
--webkit-background-clip: text;
--moz-background-clip: text;
--webkit-text-fill-color: transparent;
--moz-text-fill-color: transparent ;
+background: #eee;
 display: flex;
 align-items: center;
 cursor: pointer;
@@ -63,6 +59,7 @@ margin-right: 0.5rem;
 .navbar__menu {
 
     display: flex;
+    background: #eee;
     align-items: center;
     list-style: none;
     text-align: center;
@@ -71,10 +68,12 @@ margin-right: 0.5rem;
 
 .navbar__item {
     height:80px;
+    background: #eee;
 }
 
 .navbar__links {
-    color:white;
+    color: #000;
+    background: #eee;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -86,6 +85,7 @@ margin-right: 0.5rem;
 
 .navbar__btn {
     display: flex;
+    background: #eee;
     justify-content: center;
     align-items: center;
     padding: 0 1rem;
@@ -93,21 +93,24 @@ margin-right: 0.5rem;
 
 }
 
-.button {
+#profile-button-container{background: #eee;
+margin-top: 10px;
+}
+/* .button {
     display: flex;
+    background: #eee;
     justify-content: center;
     align-items: center;
     text-decoration: none;
     height: 100%;
     width: 100%;
-    border: none;
     outline: none;
     border-radius: 3px;
     background: #FF2491;
     white-space: normal;
     color: #fff;
     margin: -5%;
-}
+} */
 
 .button:hover {
 
@@ -117,9 +120,9 @@ margin-right: 0.5rem;
 
 .navbar__links:hover {
 background: #80FF88;
-transition: all 0.3s ease;
+transition: all 0.4s ease;
 }
-  
+/*! Login page*/
 .logo-signup {
     margin-left: 25px;
     margin-top: -905px;
@@ -131,6 +134,7 @@ transition: all 0.3s ease;
     color: #ffff;
     padding-top: 100px;
 }
+
   .abstract {
     display: flex;
     overflow-y: hidden;
@@ -142,7 +146,9 @@ transition: all 0.3s ease;
     z-index: 0;
   }
 
-                                          /*INPUTS */
+/*
+!Login INPUTS
+*/
   input {
     background-color: #454545;
     color: #e9e9e9;
@@ -150,40 +156,41 @@ transition: all 0.3s ease;
     border-radius: 10px;
     border: #2B2B2B;
     }
-.email-S{
+.email-L{
     margin-left: 100px;
     padding-top: 45px;
 }
-#emailS {
+#emailL {
     width: 500px;
     height: 70px;   
     font-size: 25px; 
     padding-left: 10px;
 }
-#emailS::placeholder {
+#emailL::placeholder {
     color: #d6d6d6 ;
     font-family: "Roboto";
     font-size: 25px;
 }
 
-.password-S{
+.password-L{
     margin-left: 100px;
     padding-top: 30px;
 }
 
-#passwordS {
+#passwordL {
     width: 500px;
     height: 70px;
     font-size: 25px;
     padding-left: 10px;
 }
-#passwordS::placeholder {
+#passwordL::placeholder {
     color: #d6d6d6 ;
     font-family: "Roboto";
     font-size: 25px;
 }
 .swap-login-signup {
-    margin-left: 100px;
+    margin-left: 105px;
+    padding-top: 8px;
 }
 #login-signup-swap {
     color: #e9e9e9;
@@ -206,8 +213,71 @@ transition: all 0.3s ease;
 }
 
 
+
+
 /* 
-@media screen and (max-width: 960px) {
+!SIGN UP
+*/ 
+.signup-title {
+    font-family: "MusticaPro";
+    font-size: 70px;
+    margin-left: 100px;
+    color: #ffff;
+    padding-top: 100px;}
+.name-S{
+    margin-left: 100px;
+    padding-top: 30px;}
+#nameS {
+    width: 500px;
+    height: 70px;   
+    font-size: 25px; 
+    padding-left: 10px;}
+#nameS::placeholder {
+    color: #d6d6d6 ;
+    font-family: "Roboto";
+    font-size: 25px;}
+
+.email-S{
+    margin-left: 100px;
+    padding-top: 20px;}
+#emailS {
+    width: 500px;
+    height: 70px;   
+    font-size: 25px; 
+    padding-left: 10px;}
+#emailS::placeholder {
+    color: #d6d6d6 ;
+    font-family: "Roboto";
+    font-size: 25px;}
+
+.password-S{
+    margin-left: 100px;
+    padding-top: 20px;}
+#passwordS {
+    width: 500px;
+    height: 70px;
+    font-size: 25px;
+    padding-left: 10px;}
+#passwordS::placeholder {
+    color: #d6d6d6 ;
+    font-family: "Roboto";
+    font-size: 25px;}
+
+.signup-button{
+    padding-left: 100px;
+    padding-top: 40px;}
+#button-signup {
+    width: 500px;
+    height: 70px;
+    border-radius: 10px;
+    background-color: #7BF589;
+    font-size: 38px;
+    font-family: "MusticaPro";
+    color: #292929;
+    border: #2B2B2B;}
+
+
+/*
 .navbar__container{
     display: flex;
     justify-content: space-between;
