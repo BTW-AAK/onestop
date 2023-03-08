@@ -325,6 +325,12 @@ h2 {
     padding-left: 50px;
     padding-right: 50px;
 }
+
+#profile-title{
+text-align: center;
+background-color: #2B2B2B;
+padding-top: 50px;
+}
 /*
 .navbar__container{
     display: flex;
