@@ -276,6 +276,7 @@ height: 750px;
 margin-top: 50px;
 margin: 50px auto auto auto;
 background-color: #454545;
+color: #454545;
 border-radius: 15px;
 z-index: 1;
 }
@@ -308,6 +309,21 @@ h2 {
     background-color: #454545;
     color: #eee;
     font-size: 25px;
+}
+#centre-bar{
+    background-color: #454545;
+    color: #454545;
+    padding-top: 100px;
+    display: block;
+    padding-left: 380px
+
+  
+}
+.centre-bar-images{
+    background-color: #454545;
+    color: #454545;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 /*
 .navbar__container{
