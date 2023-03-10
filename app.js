@@ -16,14 +16,14 @@ document.addEventListener('DOMContentLoaded', function() {
   
     // Get a reference to the sign-up button
     var signupButton = document.querySelector('#button-signup');
-  
-    // Check if the sign-up button exists on the page
+    var loginButton = this.querySelector('#button-login')
+    var database = firebase.database();
     if (signupButton) {
   
       // Handle sign-up button clicks
       signupButton.addEventListener('click', function(event) {
         event.preventDefault(); // prevent the form from submitting
-  
+        console.log("the button clicked")
         // Get user info
         var name = document.querySelector('#nameS').value;
         var email = document.querySelector('#emailS').value;
@@ -38,22 +38,58 @@ document.addEventListener('DOMContentLoaded', function() {
             // Update user display name
             user.updateProfile({
               displayName: name
-            }).then(function() {
+            })
+            var userRef = firebase.database().ref('users/' + user.uid);
+
+            // Store the user's data in the database
+            userRef.set({
+              name: name,
+              email: email
+            })
+            .then(function() {
               // Redirect to dashboard or home page
-              window.location.href = "/index.html";
-            }).catch(function(error) {
+              window.location.href = "/login.html";
+            })
+            .catch(function(error) {
               // Handle errors
               console.error(error);
+              alert(error)
             });
   
           })
           .catch(function(error) {
             // Handle errors
             console.error(error);
+            alert(error)
           });
   
       });
   
     }
-  
+    
+
+      loginButton.addEventListener('click', function(event) {
+        event.preventDefault(); 
+        console.log("button was clicked")
+        var emailL = document.getElementById("#emailL").value;
+        var passwordL = document.getElementById("#passwordL").value;
+        console.log(document.getElementById("#emailL"))
+        firebase.auth().signInWithEmailAndPassword(emailL, passwordL)
+    .then(function(userCredential) {
+      // User is signed in
+      var user = userCredential.user;
+      console.log("User is signed in");
+      alert("signed in sucessfully!")
+
+      // Redirect the user to the homepage
+      window.location.href = "Home.html";
+    })
+    .catch(function(error) {
+      // Handle errors
+      console.error(error);
+      alert(error)
+    });
+      })
+
+    
   });
