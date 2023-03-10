@@ -253,10 +253,9 @@ transition: all 0.4s ease;
     font-family: "Roboto";
     font-size: 25px;}
 
-.signup-button{
-    padding-left: 100px;
-    padding-top: 40px;}
 #button-signup {
+    margin-left: 100px;
+    margin-top: 40px;
     width: 500px;
     height: 70px;
     border-radius: 10px;
