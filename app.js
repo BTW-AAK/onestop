@@ -67,29 +67,31 @@ document.addEventListener('DOMContentLoaded', function() {
   
     }
     
+if (loginButton){
+  loginButton.addEventListener('click', function(event) {
+    event.preventDefault(); 
+    console.log("button was clicked")
+    var emailL = document.getElementById("#emailL");
+    var passwordL = document.getElementById("#passwordL");
+    console.log(document.getElementById("#emailL"))
+    firebase.auth().signInWithEmailAndPassword(emailL, passwordL)
+.then(function(userCredential) {
+  // User is signed in
+  var user = userCredential.user;
+  console.log("User is signed in");
+  alert("signed in sucessfully!")
 
-      loginButton.addEventListener('click', function(event) {
-        event.preventDefault(); 
-        console.log("button was clicked")
-        var emailL = document.getElementById("#emailL").value;
-        var passwordL = document.getElementById("#passwordL").value;
-        console.log(document.getElementById("#emailL"))
-        firebase.auth().signInWithEmailAndPassword(emailL, passwordL)
-    .then(function(userCredential) {
-      // User is signed in
-      var user = userCredential.user;
-      console.log("User is signed in");
-      alert("signed in sucessfully!")
-
-      // Redirect the user to the homepage
-      window.location.href = "Home.html";
-    })
-    .catch(function(error) {
-      // Handle errors
-      console.error(error);
-      alert(error)
-    });
-      })
+  // Redirect the user to the homepage
+  window.location.href = "Home.html";
+})
+.catch(function(error) {
+  // Handle errors
+  console.error(error);
+  alert(error)
+});
+  })
+}
+     
 
     
   });
