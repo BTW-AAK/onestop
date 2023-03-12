@@ -47,7 +47,7 @@
         <li class="chat-group-selector-item"><h3 class="chat-group-selector-title">Chat group #4</h5></li>
     </ul>
 <div class="dividing-line"></div>
-<div class="chat-box">
+<div class="chat-box" id="chat-box">
     <div id="chat-box-title">Chat group 1</div>
     <div class="placeholder-messages">
         User 1: Hello
@@ -63,5 +63,49 @@
 
 </div>
 </div>
+<html>
+
+<head>
+	<script defer src="https://widget-js.cometchat.io/v3/cometchatwidget.js"></script>
+</head>
+
+<body>
+
+<!-- This is a test -->
+	<div id="cometchat"></div>
+	<script>
+	window.addEventListener('DOMContentLoaded', (event) => {
+		CometChatWidget.init({
+			"appID": "2348085dd5a96e59",
+			"appRegion": "eu",
+			"authKey": "875239e5cb46a340d5b4033b590881505ed72bf5"
+		}).then(response => {
+			console.log("Initialization completed successfully");
+			//You can now call login function.
+			CometChatWidget.login({
+				"uid": "superhero3"
+			}).then(response => {
+				CometChatWidget.launch({
+					"widgetID": "7c49ddf2-0ad8-48be-8c5a-6f33152757c8",
+					"target": "#chat-box",
+					"roundedCorners": "true",
+					"height": "600px",
+					"width": "800px",
+					"defaultID": 'group_1678637657913', //default UID (user) or GUID (group) to show,
+					"defaultType": 'group' //user or group
+				});
+			}, error => {
+				console.log("User login failed with error:", error);
+				//Check the reason for error and take appropriate action.
+			});
+		}, error => {
+			console.log("Initialization failed with error:", error);
+			//Check the reason for error and take appropriate action.
+		});
+	});
+	</script>
+</body>
+
+</html>
 </body>
 </html>
