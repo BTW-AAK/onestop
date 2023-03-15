@@ -6,5 +6,5 @@ Test commit/push to github using laptop
 I HOPE THIS WORKS CAUSE IT BE A LIFE SAVER - It worked.
 
 Known issue:
-emailL giving value null when document.getElementById:
+email login giving value null when document.getElementById:
 possible reasons - 
