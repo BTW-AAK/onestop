@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   
     }
-    
+
 if (loginButton){
   loginButton.addEventListener('click', function(event) {
     event.preventDefault(); 
@@ -91,7 +91,49 @@ if (loginButton){
 });
   })
 }
-     
 
+Talk.ready.then(function () {
+  var currentUserID = firebase.auth().currentUser.uid;
+  var currentUserRef = firebase.database().ref("users/" + currentUserID);
+  currentUserRef.on("value", function(snapshot) {
+    // Get the current user's name from Firebase
+    var currentUserName = snapshot.val().name;
     
+    // Set the TalkJS user's name to the current user's name
+    var me = window.talkSession.me;
+    me.name = currentUserName;
+    window.talkSession.updateUser(me);
   });
+
+  var me = new Talk.User({
+    id: 'currentUserID',
+    name: 'Alice',
+    email: 'alice@example.com',
+    photoUrl: 'https://talkjs.com/images/avatar-1.jpg',
+    welcomeMessage: 'Hey there! How are you? :-)',
+  });
+  window.talkSession = new Talk.Session({
+    appId: 'tvx8KZAs',
+    me: me,
+  });
+  var other = new Talk.User({
+    id: '21322',
+    name: 'Sebastian',
+    email: 'Sebastian@example.com',
+    photoUrl: 'https://talkjs.com/images/avatar-5.jpg',
+    welcomeMessage: 'Hey, how can I help?',
+  });
+
+  var conversation = talkSession.getOrCreateConversation(
+    Talk.oneOnOneId(me, other)
+  );
+  conversation.setParticipant(me);
+  conversation.setParticipant(other);
+
+  var inbox = talkSession.createInbox({ selected: conversation });
+  inbox.mount(document.getElementById('talkjs-container'));
+});
+
+
+});
+
