@@ -8,3 +8,7 @@ I HOPE THIS WORKS CAUSE IT BE A LIFE SAVER - It worked.
 Known issue:
 emailL giving value null when document.getElementById:
 possible reasons - 
+
+
+2 ways to use javascript Internal and external. Internal uses script tag. Script src for external js. 
+

@@ -71,9 +71,9 @@ if (loginButton){
   loginButton.addEventListener('click', function(event) {
     event.preventDefault(); 
     console.log("button was clicked")
-    var emailL = document.getElementById("#emailL");
-    var passwordL = document.getElementById("#passwordL");
-    console.log(document.getElementById("#emailL"))
+    var emailL = document.querySelector("#emailL").value;
+    var passwordL = document.querySelector("#passwordL").value;
+    console.log(document.querySelector("#emailL").value)
     firebase.auth().signInWithEmailAndPassword(emailL, passwordL)
 .then(function(userCredential) {
   // User is signed in
@@ -90,7 +90,6 @@ if (loginButton){
   alert(error)
 });
   })
-
 }
      
 
