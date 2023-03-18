@@ -91,49 +91,76 @@ if (loginButton){
 });
   })
 }
+var CurrentName = null;
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    // User logged in already or has just logged in.
+    var CurrentUserUID =(user.uid);
 
-Talk.ready.then(function () {
-  var currentUserID = firebase.auth().currentUser.uid;
-  var currentUserRef = firebase.database().ref("users/" + currentUserID);
-  currentUserRef.on("value", function(snapshot) {
-    // Get the current user's name from Firebase
-    var currentUserName = snapshot.val().name;
+
+
+
+
     
-    // Set the TalkJS user's name to the current user's name
-    var me = window.talkSession.me;
-    me.name = currentUserName;
-    window.talkSession.updateUser(me);
-  });
-
-  var me = new Talk.User({
-    id: 'currentUserID',
-    name: 'Alice',
-    email: 'alice@example.com',
-    photoUrl: 'https://talkjs.com/images/avatar-1.jpg',
-    welcomeMessage: 'Hey there! How are you? :-)',
-  });
-  window.talkSession = new Talk.Session({
-    appId: 'tvx8KZAs',
-    me: me,
-  });
-  var other = new Talk.User({
-    id: '21322',
-    name: 'Sebastian',
-    email: 'Sebastian@example.com',
-    photoUrl: 'https://talkjs.com/images/avatar-5.jpg',
-    welcomeMessage: 'Hey, how can I help?',
-  });
-
-  var conversation = talkSession.getOrCreateConversation(
-    Talk.oneOnOneId(me, other)
-  );
-  conversation.setParticipant(me);
-  conversation.setParticipant(other);
-
-  var inbox = talkSession.createInbox({ selected: conversation });
-  inbox.mount(document.getElementById('talkjs-container'));
+    Talk.ready.then(function () {
+      var currentUserRef = firebase.database().ref("users/" + CurrentUserUID);
+      currentUserRef.on("value", function(snapshot) {
+        // Get the current user's name from Firebase
+        var userRef = firebase.database().ref('users/' + CurrentUserUID + '/name');
+        userRef.on('value', (snapshot) => {
+           CurrentName = snapshot.val();
+            return CurrentName;
+        });
+        var currentUserName = CurrentName;
+        
+        // Set the TalkJS user's name to the current user's name
+        var me = window.talkSession.me;
+        me.name = currentUserName;
+      });
+    
+      var me = new Talk.User({
+        id: 'currentUserID',
+        name: 'Alice',
+        email: 'alice@example.com',
+        photoUrl: 'https://talkjs.com/images/avatar-1.jpg',
+        welcomeMessage: 'Hey there! How are you? :-)',
+      });
+      window.talkSession = new Talk.Session({
+        appId: 'tvx8KZAs',
+        me: me,
+      });
+      var other = new Talk.User({
+        id: '21322',
+        name: 'Sebastian',
+        email: 'Sebastian@example.com',
+        photoUrl: 'https://talkjs.com/images/avatar-5.jpg',
+        welcomeMessage: 'Hey, how can I help?',
+      });
+    
+      var conversation = talkSession.getOrCreateConversation(
+        Talk.oneOnOneId(me, other)
+      );
+      conversation.setParticipant(me);
+      conversation.setParticipant(other);
+    
+      var inbox = talkSession.createInbox({ selected: conversation });
+      inbox.mount(document.getElementById('talkjs-container'));
+    });
+  
+  } else {
+    // User not logged in or has just logged out.
+  }
 });
 
-
+var details=function(){
+  var textMultiple = {
+       userUID:"text1",
+       userName:"text2",
+       userSchool:"This school",
+   };
+  return textMultiple;
+}
+//! This is a Test to see if user.uid works
+console.log(CurrentName)
 });
 
