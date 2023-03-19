@@ -95,13 +95,74 @@ var CurrentName = null;
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     // User logged in already or has just logged in.
+    const homePage = this.querySelector('#home-container')
+    const profilePage = this.querySelector('#profile-title')
+    if(homePage){
     var CurrentUserUID =(user.uid);
+    var currentUserRef = firebase.database().ref("users/" + CurrentUserUID);
+    currentUserRef.on("value",function(snapshot){
+// Get the current user's name from Firebase
+var userRef = firebase.database().ref('users/' + CurrentUserUID + '/name');
+userRef.on('value', (snapshot) => {
+   CurrentName = snapshot.val();
+    return CurrentName;
+});
 
 
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
 
+today = dd + '/' + mm + '/' + yyyy;
+console.log(today);
+document.getElementById("date").innerHTML = today;
 
+console.log(CurrentName)
+document.getElementById("name").innerHTML = ", "+CurrentName;
+    })};
+    if(profilePage){
+      var CurrentUserUID =(user.uid);
+      var currentUserRef = firebase.database().ref("users/" + CurrentUserUID);
+      currentUserRef.on("value",function(snapshot){
+  // Get the current user's name from Firebase
+  var userRef = firebase.database().ref('users/' + CurrentUserUID + '/name');
+  userRef.on('value', (snapshot) => {
+     CurrentName = snapshot.val();
+      return CurrentName;
+  });
+  currentUserRef.on("value",function(snapshot){
+    // Get the current user's email from Firebase
+    var usrRefEmail = firebase.database().ref('users/' + CurrentUserUID + '/email');
+    usrRefEmail.on('value', (snapshot) => {
+       CurrentEmail = snapshot.val();
+        return CurrentEmail;
+    });
+    currentUserRef.on("value",function(snapshot){
+      // Get the current user's email from Firebase
+      var userRefSchool = firebase.database().ref('users/' + CurrentUserUID + '/school');
+      userRefSchool.on('value', (snapshot) => {
+         CurrentSchool = snapshot.val();
+          return CurrentSchool;
+      });
+  
+  console.log(CurrentName)
+  document.getElementById("user-name-text").innerHTML ="Name: " + CurrentName;
+  document.getElementById("user-email-text").innerHTML ="Email: " + CurrentEmail;
+  document.getElementById("school-name-text").innerHTML ="School: " + CurrentSchool;
 
-    
+  var logoutButton = document.querySelector('#logout-button')
+  logoutButton.addEventListener('click', function(event) {
+    event.preventDefault(); // prevent the form from submitting
+    console.log("the button clicked")
+    firebase.auth().signOut()
+    alert("Succuesfully Logged Out")
+    window.location.replace("/login.html");
+  })
+      })})})};
+
+const chatContainer = this.querySelector('#chat-container')
+
     Talk.ready.then(function () {
       var currentUserRef = firebase.database().ref("users/" + CurrentUserUID);
       currentUserRef.on("value", function(snapshot) {
@@ -111,6 +172,7 @@ firebase.auth().onAuthStateChanged((user) => {
            CurrentName = snapshot.val();
             return CurrentName;
         });
+        console.log(CurrentName)
         var currentUserName = CurrentName;
         
         // Set the TalkJS user's name to the current user's name
@@ -149,18 +211,12 @@ firebase.auth().onAuthStateChanged((user) => {
   
   } else {
     // User not logged in or has just logged out.
-  }
+}
 });
 
-var details=function(){
-  var textMultiple = {
-       userUID:"text1",
-       userName:"text2",
-       userSchool:"This school",
-   };
-  return textMultiple;
-}
-//! This is a Test to see if user.uid works
-console.log(CurrentName)
+
+
+
+
 });
 
