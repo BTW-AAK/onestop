@@ -51,7 +51,6 @@ background-color: #eee;
 align-items: center;
 margin-top: auto;
 margin-bottom: auto;
-cursor: crosshair;
 margin-left: 100px;
 }
 
@@ -74,7 +73,7 @@ margin-left: 100px;
 
 .navbar__links {
     color: #000;
-    background: #eee;
+    background-color: #eee;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -95,11 +94,15 @@ margin-left: 100px;
 
 }
 
-#profile-button-container{background: #eee;
+#profile-button-container{
+background-color: #eee;
 margin-top: 10px;
-
+color: #eee;
 }
-
+#profile-icon{
+    background-color: #eee;
+    color: #eee;
+}
 
 .button:hover {
 
@@ -459,8 +462,52 @@ padding-top: 50px;
 #message-input::placeholder{
 	color: #eee;
 }
+#calendar-container{
+    padding-bottom: 20px;
+    height: 870px;
+
+}
 .elfsight-app-7a739353-c0e6-4d40-a7aa-31934e16be96{
-	background-color: #454545;
+	background-color: transparent;
 	color: #454545;
-	margin-top: 50px;
+    scale:1.35;
+    margin-left: 230px;
+    padding-top: 100px;
+    
+}
+.eapp-events-calendar-grid-component{
+    background-color: #454545;
+}
+.eapp-events-calendar-grid-item {
+    display: block;
+    box-sizing: border-box;
+    BACKGROUND: #454545;
+}
+
+.eapp-events-calendar-date-element-month.jsx-1825655906, .eapp-events-calendar-date-element-day.jsx-1825655906 {
+    BACKGROUND: #585858;
+}
+.eapp-events-calendar-grid-item-info {
+    BACKGROUND: #585858;
+}
+.eapp-events-calendar-name-component {
+    BACKGROUND: #585858;
+}
+
+.eapp-events-calendar-tags-component {
+    background: #585858;
+}
+
+.eapp-events-calendar-tags-item {
+    background: #585858;
+}
+.eapp-events-calendar-grid-item-locationAndTime {
+    background: #585858;
+}
+.eapp-events-calendar-time-time {
+    background: #585858;
+}
+
+.eapp-events-calendar-events-calendar-title {
+    background-color: #454545;
 }
