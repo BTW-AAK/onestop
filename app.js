@@ -163,60 +163,113 @@ document.getElementById("name").innerHTML = ", "+CurrentName;
 
 const chatContainer = this.querySelector('#chat-container')
 
-    Talk.ready.then(function () {
-      var currentUserRef = firebase.database().ref("users/" + CurrentUserUID);
-      currentUserRef.on("value", function(snapshot) {
-        // Get the current user's name from Firebase
-        var userRef = firebase.database().ref('users/' + CurrentUserUID + '/name');
-        userRef.on('value', (snapshot) => {
-           CurrentName = snapshot.val();
-            return CurrentName;
-        });
-        console.log(CurrentName)
-        var currentUserName = CurrentName;
+    // Talk.ready.then(function () {
+    //   var currentUserRef = firebase.database().ref("users/" + CurrentUserUID);
+    //   currentUserRef.on("value", function(snapshot) {
+    //     // Get the current user's name from Firebase
+    //     var userRef = firebase.database().ref('users/' + CurrentUserUID + '/name');
+    //     userRef.on('value', (snapshot) => {
+    //        CurrentName = snapshot.val();
+    //         return CurrentName;
+    //     });
+    //     console.log(CurrentName)
+    //     var currentUserName = CurrentName;
         
-        // Set the TalkJS user's name to the current user's name
-        var me = window.talkSession.me;
-        me.name = currentUserName;
-      });
+    //     // Set the TalkJS user's name to the current user's name
+    //     var me = window.talkSession.me;
+    //     me.name = currentUserName;
+    //   });
     
-      var me = new Talk.User({
-        id: 'currentUserID',
-        name: 'Alice',
-        email: 'alice@example.com',
-        photoUrl: 'https://talkjs.com/images/avatar-1.jpg',
-        welcomeMessage: 'Hey there! How are you? :-)',
-      });
-      window.talkSession = new Talk.Session({
-        appId: 'tvx8KZAs',
-        me: me,
-      });
-      var other = new Talk.User({
-        id: '21322',
-        name: 'Sebastian',
-        email: 'Sebastian@example.com',
-        photoUrl: 'https://talkjs.com/images/avatar-5.jpg',
-        welcomeMessage: 'Hey, how can I help?',
-      });
+    //   var me = new Talk.User({
+    //     id: 'currentUserID',
+    //     name: 'Alice',
+    //     email: 'alice@example.com',
+    //     photoUrl: 'https://talkjs.com/images/avatar-1.jpg',
+    //     welcomeMessage: 'Hey there! How are you? :-)',
+    //   });
+    //   window.talkSession = new Talk.Session({
+    //     appId: 'tvx8KZAs',
+    //     me: me,
+    //   });
+    //   var other = new Talk.User({
+    //     id: '21322',
+    //     name: 'Sebastian',
+    //     email: 'Sebastian@example.com',
+    //     photoUrl: 'https://talkjs.com/images/avatar-5.jpg',
+    //     welcomeMessage: 'Hey, how can I help?',
+    //   });
     
-      var conversation = talkSession.getOrCreateConversation(
-        Talk.oneOnOneId(me, other)
-      );
-      conversation.setParticipant(me);
-      conversation.setParticipant(other);
+    //   var conversation = talkSession.getOrCreateConversation(
+    //     Talk.oneOnOneId(me, other)
+    //   );
+    //   conversation.setParticipant(me);
+    //   conversation.setParticipant(other);
     
-      var inbox = talkSession.createInbox({ selected: conversation });
-      inbox.mount(document.getElementById('talkjs-container'));
+    //   var inbox = talkSession.createInbox({ selected: conversation });
+    //   inbox.mount(document.getElementById('talkjs-container'));
+    // });
+
+    Talk.ready.then(() => {
+      const CurrentUserUID = user.uid;
+    
+      // Get the current user's name and email from Firebase
+      const userRef = firebase.database().ref('users/' + CurrentUserUID);
+      userRef.on('value', (snapshot) => {
+        const userData = snapshot.val();
+        const CurrentName = userData.name;
+        const CurrentEmail = userData.email;
+    
+        // Create a new Talk.User instance for the current user
+        const CurrentUserTalkjs = new Talk.User({
+          id: CurrentUserUID,
+          name: CurrentName,
+          email: CurrentEmail,
+        });
+        console.log(CurrentUserTalkjs);
+        // Create a new chat group for users who have "group1" set to true in their user profile
+        const groupRef = firebase.database().ref('users');
+        groupRef.on('value', (snapshot) => {
+          snapshot.forEach((childSnapshot) => {
+            const childData = childSnapshot.val();
+            if (childData.groups && childData.groups.group1) {
+              const userId = childSnapshot.key;
+              const userTalkjs = new Talk.User({
+                id: userId,
+                name: childData.name,
+                email: childData.email,
+              });
+              CurrentUserTalkjs.conversations.create({
+                participants: [userTalkjs],
+                subject: "Group 1",
+              });
+
+    
+        // Create a new Talk.Session instance for the current user
+        const session = new Talk.Session({
+          appId: "tvx8KZAs",
+          me: CurrentUserTalkjs,
+        });
+    
+        // Select and mount the chatbox
+        function oneOnOneId(uid1, uid2) {
+          if (uid1 < uid2) {
+            return uid1 + "-" + uid2;
+          } else {
+            return uid2 + "-" + uid1;
+          }
+        }
+        const conversationId = oneOnOneId(CurrentUserUID, userId);
+        const chatbox = session.getOrCreateConversation(conversationId);
+        chatbox.select(conversation);
+        chatbox.mount(document.getElementById("talkjs-container"));
+    
+
+      }
     });
-  
-  } else {
-    // User not logged in or has just logged out.
-}
-});
-
-
-
-
-
-});
-
+  });
+      });
+    
+    });
+    
+  }})
+  })
