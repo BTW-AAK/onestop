@@ -163,35 +163,114 @@ document.getElementById("name").innerHTML = ", "+CurrentName;
       })})})};
 
 const chatContainer = this.querySelector('#chat-container')
+var selectedChat = 1;
+if (chatContainer){
+
+var chatTitlescroller = firebase.database().ref('groups/' + 'group'+1);
+chatTitlescroller.on('value', (snapshot) => {
+  chatTitlescrollerName = snapshot.val();
+  document.getElementById("chat1").innerHTML= chatTitlescrollerName
+  console.log(chatTitlescrollerName)
+});
+var chatTitlescroller = firebase.database().ref('groups/' + 'group'+2);
+chatTitlescroller.on('value', (snapshot) => {
+  chatTitlescrollerName = snapshot.val();
+  document.getElementById("chat2").innerHTML= chatTitlescrollerName
+  console.log(chatTitlescrollerName)
+});
+var chatTitlescroller = firebase.database().ref('groups/' + 'group'+3);
+chatTitlescroller.on('value', (snapshot) => {
+  chatTitlescrollerName = snapshot.val();
+  document.getElementById("chat3").innerHTML= chatTitlescrollerName
+  console.log(chatTitlescrollerName)
+});
+var chatTitlescroller = firebase.database().ref('groups/' + 'group'+4);
+chatTitlescroller.on('value', (snapshot) => {
+  chatTitlescrollerName = snapshot.val();
+  document.getElementById("chat4").innerHTML= chatTitlescrollerName
+  console.log(chatTitlescrollerName)
+});
+var chatSelector1 = document.querySelector("#chat1")
+var chatSelector2 = document.querySelector("#chat2")
+var chatSelector3 = document.querySelector("#chatSelector3")
+var chatSelector4 = document.querySelector("#chatSelector4")
 
 
-function oneOnOneId(userId1, userId2) {
-  return [userId1, userId2].sort().join('_');
+document.getElementById ("chatSelector1").addEventListener ("click", chat1, false);
+document.getElementById ("chatSelector2").addEventListener ("click", chat2, false);
+document.getElementById ("chatSelector3").addEventListener ("click", chat3, false);
+document.getElementById ("chatSelector4").addEventListener ("click", chat4, false);
+function chat1() {
+  selectedChat = 1
+  chatswitched()
+  console.log("chat1waspressed")
+}
+function chat2() {
+  selectedChat = 2
+  chatswitched()
+  console.log("chat2")
+}
+function chat3() {
+  selectedChat = 3
+  chatswitched()
+  console.log("chat3")
+}
+function chat4() {
+  selectedChat = 4
+  chatswitched()
+  console.log("chat4")
 }
 
-if (chatContainer){
-var chatTitle = document.getElementById("chat-box-title")
-var selectedChat = "1"
+console.log(selectedChat)
+
+    
+function chatswitched(){
 var chatTitleRef = firebase.database().ref('groups/' + 'group'+selectedChat);
-    chatTitleRef.on('value', (snapshot) => {
+chatTitleRef.on('value', (snapshot) => {
        chatTitleNew = snapshot.val();
        console.log(chatTitleNew)
        document.getElementById("chat-box-title").innerHTML= chatTitleNew
-       const box = document.createElement("div");
-box.id = "box";
-box.innerHTML = "YOYOYO";
-box.className = "placeholder-messages";
-const chatBox = this.querySelector('#Messages')
-chatBox.appendChild(box)
-console.log(box)
+       const chatBox = document.querySelector('#Messages')
+       chatBox.innerHTML = '';
+      });
+    };
 
-});
+var chatButton = document.querySelector("#message-enter")
+
+        chatButton.addEventListener('click', function(event) {
+var userRef = firebase.database().ref('users/' + user.uid + '/name');
+userRef.on('value', (snapshot) => {
+   CurrentName = snapshot.val();
+  currentMessageID= 1;
+        var chatInput = document.querySelector("#message-input").value
+        
+        message = document.createElement("div");
+        message.innerHTML = CurrentName+": "+chatInput;
+        message.id = "message"+String(currentMessageID);
+        message.className = "placeholder-messages";
+        currentMessageID=currentMessageID+1;
+        console.log(chatInput)
+        const chatBox = document.querySelector('#Messages')
+        chatBox.appendChild(message)
+        document.querySelector("#message-input").value = "";
+      })
+    
+
+      });
+    
+
+
+
+
+
+};
+
 
     
     
 
-}
 
+}})})
 
 // Talk.ready.then(() => {
 //   const CurrentUserUID = user.uid;
@@ -307,4 +386,4 @@ console.log(box)
 
 
 
-}})})
+

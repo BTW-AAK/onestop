@@ -11,7 +11,7 @@
 <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-firestore.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-database.js"></script>
-<script src="https://cdn.talkjs.com/talk.js"></script>
+<!-- <script src="https://cdn.talkjs.com/talk.js"></script> -->
 </head>
 <body>
     <nav class="navbar">
@@ -47,30 +47,24 @@
 <div id="chat-container" class="primary-container">
 
     <ul id="chat-ul">
-        <li id="chat1" class="chat-group-selector-item"><h3 class="chat-group-selector-title">Chat group #1</h5></li>
-        <li id="chat2" class="chat-group-selector-item"><h3 class="chat-group-selector-title">Chat group #2</h5></li>
-        <li id="chat3" class="chat-group-selector-item"><h3 class="chat-group-selector-title">Chat group #3</h5></li>
-        <li id="chat4" class="chat-group-selector-item"><h3 class="chat-group-selector-title">Chat group #4</h5></li>
+        <li id="chatSelector1" class="chat-group-selector-item"><h3 id="chat1" class="chat-group-selector-title">Chat group #1</h5></li>
+        <li id="chatSelector2" class="chat-group-selector-item"><h3 id="chat2" class="chat-group-selector-title">Chat group #2</h5></li>
+        <li id="chatSelector3" class="chat-group-selector-item"><h3 id="chat3" class="chat-group-selector-title">Chat group #3</h5></li>
+        <li id="chatSelector4" class="chat-group-selector-item"><h3 id="chat4" class="chat-group-selector-title">Chat group #4</h5></li>
     </ul>
+
 <div class="dividing-line"></div>
 <div class="chat-box" id="chat-box">
     <div id="chat-box-title">Chat group 1</div>
     <div id="Messages">
         <div class="placeholder-messages" id="message1">
-            User 1: Hello
-        </div>
-        <div class="placeholder-messages" id="message2">
-            User 2: Hello there
-        </div>
-        <div class="placeholder-messages" id="message3">
-    
+            User 16: Hello
         </div>
     </div>
 
-
-
     <div id="message-input-bar">
         <input type="text" id="message-input" placeholder="Input message here...">
+        <button id="message-enter">Enter</button>
      </div>
 
 </div>
@@ -80,17 +74,17 @@
 
 <body>
 <!-- minified snippet to load TalkJS without delaying your page -->
-<script>
+<!-- <script>
     (function(t,a,l,k,j,s){
     s=a.createElement('script');s.async=1;s.src="https://cdn.talkjs.com/talk.js";a.head.appendChild(s)
     ;k=t.Promise;t.Talk={v:3,ready:{then:function(f){if(k)return new k(function(r,e){l.push([f,r,e])});l
     .push([f])},catch:function(){return k&&new k()},c:l}};})(window,document,[]);
-    </script>
+    </script> -->
     
     <!-- container element in which TalkJS will display a chat UI -->
-    <div id="talkjs-container" style="width: 90%; margin: 30px; height: 500px">
+    <!-- <div id="talkjs-container" style="width: 90%; margin: 30px; height: 500px">
       <i>Loading chat...</i>
-    </div>
+    </div> -->
 
 
 <!-- This is a test
