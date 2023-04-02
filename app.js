@@ -95,14 +95,14 @@ if (loginButton){
 var CurrentName = null;
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    // User logged in already or has just logged in.
+    // The User logged in already or has just logged in.
     const homePage = this.querySelector('#home-container')
     const profilePage = this.querySelector('#profile-title')
     if(homePage){
     var CurrentUserUID =(user.uid);
     var currentUserRef = firebase.database().ref("users/" + CurrentUserUID);
     currentUserRef.on("value",function(snapshot){
-// Get the current user's name from Firebase
+// Getting the current user's name from Firebase
 var userRef = firebase.database().ref('users/' + CurrentUserUID + '/name');
 userRef.on('value', (snapshot) => {
    CurrentName = snapshot.val();
@@ -112,7 +112,8 @@ userRef.on('value', (snapshot) => {
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+//+1 because January is 0!
 var yyyy = today.getFullYear();
 
 today = dd + '/' + mm + '/' + yyyy;
