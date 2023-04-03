@@ -204,7 +204,6 @@ transition: all 0.4s ease;
     margin-left: 100px;
     margin-top: 50px;
     box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
-    cursor: pointer;
     outline: none;
     transition: 0.2s all;
 }
