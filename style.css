@@ -295,39 +295,42 @@ color: #454545;
 border-radius: 15px;
 z-index: 1;
 }
+#home-container{
+background-color: #2b2b2b;
+color: #2b2b2b;
+}
 #greeting-name{
-    background-color: #454545;
+    background-color: #2b2b2b;
     padding-top: 200px;
     text-align: center;
     border-radius: 15px;
 }
 
 h1{
-    background-color: #454545;
+    background-color: #2b2b2b;
     color: #eee;
     z-index: 2;
-    font-size: 70px;
+    font-size: 90px;
 }
 #name{
-    background-color: #454545;
+    background-color: #2b2b2b;
     color: #eee;
-    font-size: 70px;
+    font-size: 90px;
 }
 h2 {
-    background-color: #454545;
+    background-color: #2b2b2b;
     color: #eee;
     z-index: 2;
-    font-size: 25px;
+    font-size: 35px;
 }
 #date{
     padding-top: 20px;
-    background-color: #454545;
+    background-color: #2b2b2b;
     color: #eee;
-    font-size: 25px;
+    font-size: 35px;
 }
 #centre-bar{
-    background-color: #454545;
-    color: #454545;
+    background-color: #2b2b2b;
     padding-top: 100px;
     display: block;
     padding-left: 380px
