@@ -486,15 +486,15 @@ padding-top: 50px;
 }
 #calendar-container{
     padding-bottom: 20px;
-    height: 870px;
+    height: 810px;
 
 }
 .elfsight-app-7a739353-c0e6-4d40-a7aa-31934e16be96{
 	background-color: transparent;
 	color: #454545;
-    scale:1.35;
+    scale:1.25;
     margin-left: 230px;
-    padding-top: 100px;
+    padding-top: 80px;
     
 }
 .eapp-events-calendar-grid-component{

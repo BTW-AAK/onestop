@@ -167,25 +167,39 @@ const chatContainer = this.querySelector('#chat-container')
 var selectedChat = 1;
 if (chatContainer){
 
-var chatTitlescroller = firebase.database().ref('groups/' + 'group'+1);
+  // currentUserRef.on("value",function(snapshot){
+  //   // Get the current user's email from Firebase
+  //   var userRefSchool = firebase.database().ref('users/' + CurrentUserUID + '/school');
+  //   userRefSchool.on('value', (snapshot) => {
+  //      CurrentSchool = snapshot.val();
+  //       return CurrentSchool;
+  //   });
+
+
+
+
+
+var chatTitlescroller = firebase.database().ref('groups/' + 'group'+1 +'/groupname' );
 chatTitlescroller.on('value', (snapshot) => {
   chatTitlescrollerName = snapshot.val();
   document.getElementById("chat1").innerHTML= chatTitlescrollerName
+
   console.log(chatTitlescrollerName)
 });
-var chatTitlescroller = firebase.database().ref('groups/' + 'group'+2);
+var chatTitlescroller = firebase.database().ref('groups/' + 'group'+2 +'/groupname');
 chatTitlescroller.on('value', (snapshot) => {
   chatTitlescrollerName = snapshot.val();
   document.getElementById("chat2").innerHTML= chatTitlescrollerName
   console.log(chatTitlescrollerName)
 });
-var chatTitlescroller = firebase.database().ref('groups/' + 'group'+3);
+var chatTitlescroller = firebase.database().ref('groups/' + 'group'+3 +'/groupname');
 chatTitlescroller.on('value', (snapshot) => {
   chatTitlescrollerName = snapshot.val();
   document.getElementById("chat3").innerHTML= chatTitlescrollerName
   console.log(chatTitlescrollerName)
 });
-var chatTitlescroller = firebase.database().ref('groups/' + 'group'+4);
+
+var chatTitlescroller = firebase.database().ref('groups/' + 'group'+4 +'/groupname');
 chatTitlescroller.on('value', (snapshot) => {
   chatTitlescrollerName = snapshot.val();
   document.getElementById("chat4").innerHTML= chatTitlescrollerName
@@ -226,7 +240,7 @@ console.log(selectedChat)
 
     
 function chatswitched(){
-var chatTitleRef = firebase.database().ref('groups/' + 'group'+selectedChat);
+var chatTitleRef = firebase.database().ref('groups/' + 'group'+selectedChat + '/groupname');
 chatTitleRef.on('value', (snapshot) => {
        chatTitleNew = snapshot.val();
        console.log(chatTitleNew)
@@ -255,8 +269,8 @@ userRef.on('value', (snapshot) => {
         chatBox.appendChild(message)
         document.querySelector("#message-input").value = "";
       })
-    
+    })
 
-      });
+      // });
 };
 }})})
