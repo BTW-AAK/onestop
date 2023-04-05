@@ -402,11 +402,14 @@ chatTitleRef.on('value', (snapshot) => {
         })
         .then(function(){
           // After we send the chat refresh to get the new messages
-          parent.refresh_chat()
-        })
-      })
           chat_input.value = ''
           message = null
+          parent.refresh_chat()
+          return
+        })
+        return
+      })
+
     }
     // Get name. Gets the username from localStorage
     get_name(){
@@ -510,7 +513,6 @@ chatTitleRef.on('value', (snapshot) => {
     app.chat()
   }
   
-
 
 
 // var chatButton = document.querySelector("#message-enter")
