@@ -205,12 +205,23 @@ chatTitlescroller.on('value', (snapshot) => {
   document.getElementById("chat4").innerHTML= chatTitlescrollerName
   console.log(chatTitlescrollerName)
 });
-var chatSelector1 = document.querySelector("#chat1")
-var chatSelector2 = document.querySelector("#chat2")
-var chatSelector3 = document.querySelector("#chatSelector3")
-var chatSelector4 = document.querySelector("#chatSelector4")
 
 
+    //*TRYING PUBNUB
+    (function() {
+
+      
+
+console.log(user.name)
+console.log(typeof(user.uid))
+if (user.uid=="OsMWx3YDbCTqbK2pVyWVNPiRps43"){
+var messegerUID = "20"
+}
+if (user.uid=="BQiW3RsDCzeYX37E0Mj8n2qkEiI3"){
+var messegerUID = "16"
+}
+
+var selectedChat = 1
 document.getElementById ("chatSelector1").addEventListener ("click", chat1, false);
 document.getElementById ("chatSelector2").addEventListener ("click", chat2, false);
 document.getElementById ("chatSelector3").addEventListener ("click", chat3, false);
@@ -245,23 +256,31 @@ chatTitleRef.on('value', (snapshot) => {
        chatTitleNew = snapshot.val();
        console.log(chatTitleNew)
        document.getElementById("chat-box-title").innerHTML= chatTitleNew
-       const chatBox = document.querySelector('#Messages')
-       chatBox.innerHTML = '';
+
       });
+      document.getElementById("Messages").innerHTML= ""
+      
+      pubnub.fetchMessages( // Get the last 10 messages sent in the chat.
+      {
+          channels: ["group-channel"+selectedChat],
+          count: 10,
+      },
+      function (status, response) {
+          if (response.channels[channel] && channel in response.channels) {
+              response.channels[channel].forEach((message) => {
+                  // console.log(message);
+                  if (message.uuid == pubnub.getUUID()) { // Check who sent the message.
+                      chat.publishMessage('You', message.message);
+                  } else {
+                      chat.receiveMessage(message.uuid, message.message);
+                  }
+              });
+          }
+      }
+  );
     };
 
 
-    //*TRYING PUBNUB
-    (function() {
-
-console.log(user.name)
-console.log(typeof(user.uid))
-if (user.uid=="OsMWx3YDbCTqbK2pVyWVNPiRps43"){
-var messegerUID = "20"
-}
-if (user.uid=="BQiW3RsDCzeYX37E0Mj8n2qkEiI3"){
-var messegerUID = "16"
-}
 
       var pubnub = new PubNub({ // Set your PubNub keys here 
           publishKey: 'pub-c-8052d94e-2c4c-4a11-b20e-42cabb798f23',
@@ -272,7 +291,7 @@ var messegerUID = "16"
       var messagesArea = document.getElementById('Messages'),
           input = document.getElementById('message-input'),
           sendButton = document.getElementById('message-enter'),
-          channel = 'chat-channel';
+          channel = "group-channel"+selectedChat;
 
       class chatControl { // Formats messages and scrolls into view.
           publishMessage(name, msg) {
@@ -335,7 +354,7 @@ var messegerUID = "16"
 
       pubnub.fetchMessages( // Get the last 10 messages sent in the chat.
       {
-          channels: [channel],
+          channels: ["group-channel"+selectedChat],
           count: 10,
       },
       function (status, response) {
@@ -351,6 +370,7 @@ var messegerUID = "16"
           }
       }
   );
+
 
 
   })();
