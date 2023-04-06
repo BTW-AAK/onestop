@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var name = document.querySelector('#nameS').value;
         var email = document.querySelector('#emailS').value;
         var password = document.querySelector('#passwordS').value;
-  
+  var school = ""
         // Sign up the user with Firebase Authentication
         firebase.auth().createUserWithEmailAndPassword(email, password)
           .then(function(userCredential) {
@@ -45,10 +45,11 @@ document.addEventListener('DOMContentLoaded', function() {
             userRef.set({
               name: name,
               email: email,
+              school: school
             })
             
             .then(function() {
-              // Redirect to dashboard or home page
+              //  Navigate  home page
               window.location.href = "/login.html";
             })
             .catch(function(error) {
@@ -75,7 +76,9 @@ if (loginButton){
     var emailL = document.querySelector("#emailL").value;
     var passwordL = document.querySelector("#passwordL").value;
     console.log(document.querySelector("#emailL").value)
+
     firebase.auth().signInWithEmailAndPassword(emailL, passwordL)
+
 .then(function(userCredential) {
   // User is signed in
   var user = userCredential.user;
@@ -167,17 +170,6 @@ const chatContainer = this.querySelector('#chat-container')
 var selectedChat = 1;
 if (chatContainer){
 
-  // currentUserRef.on("value",function(snapshot){
-  //   // Get the current user's email from Firebase
-  //   var userRefSchool = firebase.database().ref('users/' + CurrentUserUID + '/school');
-  //   userRefSchool.on('value', (snapshot) => {
-  //      CurrentSchool = snapshot.val();
-  //       return CurrentSchool;
-  //   });
-
-
-
-
 
 var chatTitlescroller = firebase.database().ref('groups/' + 'group'+1 +'/groupname' );
 chatTitlescroller.on('value', (snapshot) => {
@@ -205,7 +197,14 @@ chatTitlescroller.on('value', (snapshot) => {
   document.getElementById("chat4").innerHTML= chatTitlescrollerName
   console.log(chatTitlescrollerName)
 });
+var selectedChat = 1
+var chatTitleRef = firebase.database().ref('groups/' + 'group'+selectedChat + '/groupname');
+chatTitleRef.on('value', (snapshot) => {
+       chatTitleNew = snapshot.val();
+       console.log(chatTitleNew)
+       document.getElementById("chat-box-title").innerHTML= chatTitleNew
 
+      });
 
     //*TRYING PUBNUB
     (function() {
