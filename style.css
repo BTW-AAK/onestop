@@ -19,19 +19,17 @@ body {
 }
 
 .navbar {
-    background: #eee;
+background: #eee;
 height: 80px;
-display: flex;
+border-bottom-left-radius: 25px;
+border-bottom-right-radius: 25px;
 justify-content: center;
 align-items: center;
 font-size: 1.4rem;
 position: sticky;
 top: 0;
-border-bottom-left-radius: 25px;
-border-bottom-right-radius: 25px;
+display: flex;
 z-index: 999;
-
-
 }
 
 .navbar__container{
@@ -41,7 +39,6 @@ justify-content: space-between;
 height: 80px;
 z-index: 1;
 width: 100%;
-max-width: 1300px;
 margin: 0 auto;
 margin-left: 700px;
 padding: 0 60px;
@@ -54,11 +51,10 @@ background-color: #eee;
 align-items: center;
 margin-top: auto;
 margin-bottom: auto;
-margin-left: 100px;
+margin-left: 155px;
 }
 
 .navbar__menu {
-
     display: flex;
     background: #eee;
     color: #eee;
@@ -303,10 +299,10 @@ background-color: #2b2b2b;
 color: #2b2b2b;
 }
 #greeting-name{
-    background-color: #2b2b2b;
-    padding-top: 200px;
-    text-align: center;
-    border-radius: 15px;
+background-color: #2b2b2b;
+padding-top: 200px;
+text-align: center;
+border-radius: 15px;
 }
 
 h1{
@@ -321,16 +317,15 @@ h1{
     font-size: 90px;
 }
 h2 {
-    background-color: #2b2b2b;
     color: #eee;
     z-index: 2;
     font-size: 35px;
 }
 #date{
-    padding-top: 20px;
-    background-color: #2b2b2b;
-    color: #eee;
-    font-size: 35px;
+padding-top: 20px;
+background-color: #2b2b2b;
+color: #eee;
+font-size: 35px;
 }
 #centre-bar{
     background-color: #2b2b2b;
@@ -535,29 +530,18 @@ padding-top: 50px;
 }
 
 .eapp-events-calendar-date-element-month.jsx-1825655906, .eapp-events-calendar-date-element-day.jsx-1825655906 {
-    BACKGROUND: #585858;
-}
+    BACKGROUND: #585858;}
 .eapp-events-calendar-grid-item-info {
-    BACKGROUND: #585858;
-}
+    BACKGROUND: #585858;}
 .eapp-events-calendar-name-component {
-    BACKGROUND: #585858;
-}
-
+    BACKGROUND: #585858;}
 .eapp-events-calendar-tags-component {
-    background: #585858;
-}
-
+    background: #585858;}
 .eapp-events-calendar-tags-item {
-    background: #585858;
-}
+    background: #585858;}
 .eapp-events-calendar-grid-item-locationAndTime {
-    background: #585858;
-}
+    background: #585858;}
 .eapp-events-calendar-time-time {
-    background: #585858;
-}
-
+    background: #585858;}
 .eapp-events-calendar-events-calendar-title {
-    background-color: #454545;
-}
+    background-color: #454545;}
