@@ -213,12 +213,12 @@ chatTitleRef.on('value', (snapshot) => {
 
 console.log(user.name)
 console.log(typeof(user.uid))
-// if (user.uid=="OsMWx3YDbCTqbK2pVyWVNPiRps43"){
-// var messegerUID = "20"
-// }
-// if (user.uid=="BQiW3RsDCzeYX37E0Mj8n2qkEiI3"){
-// var messegerUID = "16"
-// }
+if (user.uid=="OsMWx3YDbCTqbK2pVyWVNPiRps43"){
+var messegerUID = "20"
+}
+if (user.uid=="BQiW3RsDCzeYX37E0Mj8n2qkEiI3"){
+var messegerUID = "16"
+}
 
 var selectedChat = 1
 document.getElementById ("chatSelector1").addEventListener ("click", chat1, false);
@@ -351,8 +351,7 @@ chatTitleRef.on('value', (snapshot) => {
           }
       });
 
-      pubnub.fetchMessages( 
-        // Get the last 10 messages sent in the chat.
+      pubnub.fetchMessages( // Get the last 10 messages sent in the chat.
       {
           channels: ["group-channel"+selectedChat],
           count: 10,
